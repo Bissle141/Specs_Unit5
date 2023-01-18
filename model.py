@@ -42,6 +42,12 @@ class Movies(db.Model):
     def __repr__(self):
         return f"<Movie movie_id={self.movie_id} title={self.title}>"
     
+    def __init__(self, title, overview, release_date, poster_path):
+        self.title = title
+        self.overview = overview
+        self.release_date = release_date
+        self.poster_path = poster_path
+    
 class Ratings(db.Model):
     """Movie ratings"""
 
