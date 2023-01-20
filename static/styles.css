@@ -1,0 +1,20 @@
+.movies-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.movie-card {
+    margin: 10px;
+}
+
+#login-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    min-width: 1000px;
+}
