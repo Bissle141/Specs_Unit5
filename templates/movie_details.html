@@ -3,11 +3,45 @@
 {% block title %}{{ movie.title }} - Details{% endblock %}
 
 {% block body %}
-    <h1>{{ movie.title }}</h1>
+    <h1 class="text-center m-3"> {{ movie.title }} </h1>
+    <div class="container container-fluid border d-flex flex-row flex-nowrap justify-content-between">
+        <div class="m-3 container d-flex flex-column">
+            <h4>Release Date:</h4>
+            <p class="m-2"> {{ movie.release_date }} </p>
+            <hr style="width: 100%; height: 2px;">
+            <h4>Overview:</h4>
+            <p class="text-justify"> {{ movie.overview }} </p>
+        </div>
 
-    <p>
-    {{ movie.overview }}
-    </p>
+        <img class="rounded p-2" style="max-width: 40%;" src="{{ movie.poster_path }}">
+    </div>
 
-    <img src="{{ movie.poster_path }}">
+    <div class="container d-flex flex-column">
+        <form action="/rate/{{ movie.movie_id }} " method="POST">
+            <div class="input-group mb-3 float-right m-5" style="width: 300px;">
+                <div class="input-group-prepend">
+                    <label class="input-group-text bg-info text-white" for="rating">Rating</label>
+                </div>
+                <select class="custom-select" id="rating" name="rating">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-info" type="submit">Submit</button>
+                </div>  
+            </div>
+        </form>
+        
+        <h1>Ratings:</h1>
+        <div class="container rounded border m-3 container-fluid">
+            {% for rate in ratings %}
+            <div class="row border p-2">
+                User: {{rate.user['username']}} Rating: {{rate.score}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

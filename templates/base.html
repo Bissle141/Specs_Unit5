@@ -26,7 +26,7 @@
 
           <li class="nav-item">
             <a class="nav-link" href=" {{url_for('login_logout')}} ">
-              {% if 'user' in session %}
+              {% if 'user_id' in session %}
                 Logout 
               {% else %}
                 Login
@@ -34,11 +34,6 @@
             </a>
           </li>
         </ul>
-
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
 
       </div>
     </nav>
@@ -48,9 +43,9 @@
   </head>
   <body>
     {% for msg in get_flashed_messages() %}
-      <p class="flash-msg">
+      <div class="alert alert-info m-2 text-center" role="alert">
         {{ msg }}
-      </p>
+      </div>
     {% endfor %}
 
     {% block body %}{% endblock %}
